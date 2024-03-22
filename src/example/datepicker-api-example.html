@@ -12,20 +12,27 @@
 <h2>Outra ideia</h2>
 <mat-form-field class="example-full-width">
   <mat-label>Choose a date</mat-label>
-  <input style="display:none;" matInput [(ngModel)]="dataSelecionada" [matDatepicker]="picker"/>
+  <input style="display:none;" matInput [ngModelOptions]="{standalone: true}" [(ngModel)]="dataSelecionada" [matDatepicker]="picker"/>
+  
+
+  <input matInput [ngModelOptions]="{standalone: true}" mask="d0/M0/0000" placeholder="Ex. 00/00/0000" 
+  (ngModel)="dataMascarada" [dropSpecialCharacters]="false" (blur)="onBlur()" (change)='todate($event)'>
+
   <mat-hint>MM/DD/YYYY</mat-hint>
-
-  <input matInput mask="d0/M0/0000" placeholder="Ex. 00/00/0000"[(ngModel)]="dataMascarada" [dropSpecialCharacters]="false">
-
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 
 
 </mat-form-field>
+<!--Ativar popup externamente
 <button mat-raised-button (click)="picker.open()">Open</button>
+-->
 
-<h2>Variavel dataSelecionada</h2>
+<h2>Variaveis</h2>
+<b>dataSelecionada</b>
 <pre>{{dataSelecionada | json}}</pre>
+
+<b>dataMascarada</b>
 <pre>{{dataMascarada | json}}</pre>
 
 <!-- Copyright 2024 Google LLC. All Rights Reserved.

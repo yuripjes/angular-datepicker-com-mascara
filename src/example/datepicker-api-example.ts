@@ -30,6 +30,31 @@ export class DatepickerApiExample {
   dataSelecionada: Date = new Date();
 
   dataMascarada: string;
+
+
+
+
+
+    onChange(event: any) {
+    console.log('onChange',event)
+    // console.log(event);
+    //this.dateForm.get('date').setValue(event);
+     this.dataSelecionada = event;
+    this.onBlur();
+  }
+
+  todate(event: any) {
+     console.log('todate',event)
+    //this.dateForm.get('date').setValue(new Date(value));
+    this.dataSelecionada = new Date(event?.target?.value)
+
+  }
+
+  onBlur() {
+    if ( this.dataSelecionada) {
+      //this.onChangeCallback(this.dateForm.controls.date);
+    }
+  }
 }
 
 
